@@ -1,4 +1,4 @@
-const API_URL = "https://your-render-url.onrender.com/predict";
+const API_URL = "https://churner.onrender.com/predict";
 
 async function predict() {
 
