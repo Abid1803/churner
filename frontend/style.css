@@ -1,16 +1,70 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #ccc;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 40px 20px;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  width: 250px;
+    max-width: 700px;
+    margin: auto;
 }
 
-input,
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+p {
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background: #f6f6f6;
+    font-family: inherit;
+    font-size: 14px;
+}
+
 button {
-  margin: 10px 0;
-  padding: 8px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.87;
+}
+
+#result {
+    margin-top: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
 }

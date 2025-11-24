@@ -2,61 +2,105 @@
 <html>
 <head>
   <title>Churn Predictor</title>
+
+  <!-- Font -->
+  <link href="https://fonts.cdnfonts.com/css/jetbrains-mono-2" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h2>Customer Churn Prediction</h2>
+  <div class="container">
 
-  <form id="form">
-    <label>Gender:</label>
-    <select id="gender">
-      <option>Male</option>
-      <option>Female</option>
-    </select><br><br>
+    <h1>customer churn prediction</h1>
+    <p>enter customer details to predict the churn probability.</p>
 
-    <label>Senior Citizen (0/1):</label>
-    <input type="number" id="SeniorCitizen"><br><br>
+    <form id="form">
 
-    <label>Partner:</label>
-    <select id="Partner"><option>Yes</option><option>No</option></select><br><br>
+      <div class="form-group">
+        <label>Gender</label>
+        <select id="gender">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
 
-    <label>Dependents:</label>
-    <select id="Dependents"><option>Yes</option><option>No</option></select><br><br>
+      <div class="form-group">
+        <label>Senior Citizen (0/1)</label>
+        <input type="number" id="SeniorCitizen">
+      </div>
 
-    <label>Tenure:</label>
-    <input type="number" id="tenure"><br><br>
+      <div class="form-group">
+        <label>Partner</label>
+        <select id="Partner"><option>Yes</option><option>No</option></select>
+      </div>
 
-    <label>Phone Service:</label>
-    <select id="PhoneService"><option>Yes</option><option>No</option></select><br><br>
+      <div class="form-group">
+        <label>Dependents</label>
+        <select id="Dependents"><option>Yes</option><option>No</option></select>
+      </div>
 
-    <label>Multiple Lines:</label>
-    <select id="MultipleLines">
-      <option>No</option>
-      <option>Yes</option>
-      <option>No phone service</option>
-    </select><br><br>
+      <div class="form-group">
+        <label>Tenure</label>
+        <input type="number" id="tenure">
+      </div>
 
-    <label>Internet Service:</label>
-    <select id="InternetService">
-      <option>DSL</option>
-      <option>Fiber optic</option>
-      <option>No</option>
-    </select><br><br>
+      <div class="form-group">
+        <label>Phone Service</label>
+        <select id="PhoneService"><option>Yes</option><option>No</option></select>
+      </div>
 
-    <label>Online Security:</label>
-    <select id="OnlineSecurity"><option>Yes</option><option>No</option><option>No internet service</option></select><br><br>
+      <div class="form-group">
+        <label>Multiple Lines</label>
+        <select id="MultipleLines">
+          <option>No</option>
+          <option>Yes</option>
+          <option>No phone service</option>
+        </select>
+      </div>
 
-    <label>Monthly Charges:</label>
-    <input type="number" id="MonthlyCharges"><br><br>
+      <div class="form-group">
+        <label>Internet Service</label>
+        <select id="InternetService">
+          <option>DSL</option>
+          <option>Fiber optic</option>
+          <option>No</option>
+        </select>
+      </div>
 
-    <label>Total Charges:</label>
-    <input type="number" id="TotalCharges"><br><br>
+      <div class="form-group">
+        <label>Online Security</label>
+        <select id="OnlineSecurity">
+          <option>Yes</option>
+          <option>No</option>
+          <option>No internet service</option>
+        </select>
+      </div>
 
-    <button type="button" onclick="predict()">Predict</button>
-  </form>
 
-  <h3 id="result"></h3>
+      <div class="form-group">
+        <label>Monthly Charges</label>
+        <input type="number" id="MonthlyCharges">
+      </div>
 
+      <div class="form-group">
+        <label>Total Charges</label>
+        <input type="number" id="TotalCharges">
+      </div>
+
+      <button type="button" onclick="predict()">Predict</button>
+    </form>
+
+    <h3 id="result"></h3>
+
+  </div>
+
+  <footer>
+      <a href="https://maxepoch.netlify.app">← By @ Mohammad Abid (maxEpoch)</a>
+  </footer>
+  
   <script src="script.js"></script>
+
 </body>
 </html>
