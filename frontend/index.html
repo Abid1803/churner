@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Churn Predictor</title>
+</head>
+
+<body>
+  <h2>Customer Churn Prediction</h2>
+
+  <form id="form">
+    <label>Gender:</label>
+    <select id="gender">
+      <option>Male</option>
+      <option>Female</option>
+    </select><br><br>
+
+    <label>Senior Citizen (0/1):</label>
+    <input type="number" id="SeniorCitizen"><br><br>
+
+    <label>Partner:</label>
+    <select id="Partner"><option>Yes</option><option>No</option></select><br><br>
+
+    <label>Dependents:</label>
+    <select id="Dependents"><option>Yes</option><option>No</option></select><br><br>
+
+    <label>Tenure:</label>
+    <input type="number" id="tenure"><br><br>
+
+    <label>Phone Service:</label>
+    <select id="PhoneService"><option>Yes</option><option>No</option></select><br><br>
+
+    <label>Multiple Lines:</label>
+    <select id="MultipleLines">
+      <option>No</option>
+      <option>Yes</option>
+      <option>No phone service</option>
+    </select><br><br>
+
+    <label>Internet Service:</label>
+    <select id="InternetService">
+      <option>DSL</option>
+      <option>Fiber optic</option>
+      <option>No</option>
+    </select><br><br>
+
+    <label>Online Security:</label>
+    <select id="OnlineSecurity"><option>Yes</option><option>No</option><option>No internet service</option></select><br><br>
+
+    <label>Monthly Charges:</label>
+    <input type="number" id="MonthlyCharges"><br><br>
+
+    <label>Total Charges:</label>
+    <input type="number" id="TotalCharges"><br><br>
+
+    <button type="button" onclick="predict()">Predict</button>
+  </form>
+
+  <h3 id="result"></h3>
+
+  <script src="script.js"></script>
+</body>
+</html>
