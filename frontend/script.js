@@ -1,4 +1,4 @@
-const API_URL = "https://churner.onrender.com/predict";
+const API_URL = "https://maxepoch-churner.hf.space/predict";
 
 async function predict() {
 
