@@ -2,15 +2,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import pickle
-import numpy as np
 import pandas as pd
 
+# Load model artifacts
 model = pickle.load(open("model.pkl", "rb"))
 scaler = pickle.load(open("scaler.pkl", "rb"))
 features = pickle.load(open("features.pkl", "rb"))
 
 app = FastAPI()
 
+# Allow all frontend requests
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,6 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Input schema
 class UserInput(BaseModel):
     gender: str
     SeniorCitizen: int
@@ -40,12 +42,12 @@ class UserInput(BaseModel):
     MonthlyCharges: float
     TotalCharges: float
 
-
-def preprocess(data: dict):
+# Preprocessing
+def preprocess(data):
     df = pd.DataFrame([data])
 
-    bin_cols = ["Partner", "Dependents", "PhoneService", "PaperlessBilling"]
-    for col in bin_cols:
+    binary_cols = ["Partner", "Dependents", "PhoneService", "PaperlessBilling"]
+    for col in binary_cols:
         df[col] = df[col].map({"Yes": 1, "No": 0})
 
     df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
@@ -56,24 +58,14 @@ def preprocess(data: dict):
     df = df.reindex(columns=features, fill_value=0)
 
     scaled = scaler.transform(df)
-
     return scaled
-
 
 @app.get("/")
 def home():
-    return {"message": "Hugging Face Churn Prediction API is running!"}
-
+    return {"message": "Churn Prediction API is running from GitHub → HuggingFace Sync"}
 
 @app.post("/predict")
 def predict(user: UserInput):
     processed = preprocess(user.dict())
-    prob = model.predict_proba(processed)[0][1]
-    return {"churn_probability": float(prob)}
-
-
-# 🔥 Required for Hugging Face
-import uvicorn
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=7860)
+    probability = model.predict_proba(processed)[0][1]
+    return {"churn_probability": float(probability)}
