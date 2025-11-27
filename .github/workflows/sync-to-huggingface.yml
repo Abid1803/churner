@@ -1,0 +1,35 @@
+name: Sync to Hugging Face
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Push to Hugging Face
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        # Configure git
+        git config --global user.email "github-actions@github.com"
+        git config --global user.name "GitHub Actions"
+        
+        # Clone Hugging Face repo
+        git clone https://huggingface:$HF_TOKEN@huggingface.co/spaces/maxepoch/churner
+        
+        # Copy backend files to HF space
+        cp -r backend/* churner/
+        
+        # Commit and push to HF
+        cd churner
+        git add .
+        git commit -m "Automated update from GitHub: ${{ github.sha }}" || exit 0
+        git push
