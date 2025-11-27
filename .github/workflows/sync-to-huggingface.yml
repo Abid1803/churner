@@ -2,7 +2,8 @@ name: Sync to Hugging Face
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -18,18 +19,16 @@ jobs:
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
-        # Configure git
         git config --global user.email "github-actions@github.com"
         git config --global user.name "GitHub Actions"
-        
-        # Clone Hugging Face repo
+
+        # Clone HF space
         git clone https://huggingface:$HF_TOKEN@huggingface.co/spaces/maxepoch/churner
-        
-        # Copy backend files to HF space
+
+        # Copy backend files (adjust if folder name is different)
         cp -r backend/* churner/
-        
-        # Commit and push to HF
+
         cd churner
         git add .
-        git commit -m "Automated update from GitHub: ${{ github.sha }}" || exit 0
+        git commit -m "Automated update from GitHub: ${{ github.sha }}" || echo "No changes to commit"
         git push
