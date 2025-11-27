@@ -19,7 +19,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+#example push
 # Input schema
 class UserInput(BaseModel):
     gender: str
